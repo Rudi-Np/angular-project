@@ -1,59 +1,121 @@
-# Project
+# Angular + .NET Web API – Garages Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+## 📌 תיאור כללי
 
-## Development server
+פרויקט Full‑Stack הכולל:
 
-To start a local development server, run:
+* **צד שרת**: Web API ב־ASP.NET Core
+* **צד לקוח**: Angular (Standalone Components) עם Angular Material
+
+המערכת שולפת נתוני מוסכים מ־API ממשלתי, שומרת אותם במסד נתונים, ומציגה אותם בטבלה אינטראקטיבית בצד הלקוח.
+
+---
+
+## 🖥️ צד שרת – Backend (.NET Core)
+
+### טכנולוגיות
+
+* ASP.NET Core Web API
+* HttpClient
+* פעולות אסינכרוניות (`async / await`)
+* מסד נתונים (לפי המימוש בפרויקט)
+
+### יכולות עיקריות
+
+* שליפת נתוני מוסכים מ־API ממשלתי:
+
+  ```
+  https://data.gov.il/api/3/action/datastore_search
+  ```
+* שמירת הנתונים במסד הנתונים
+* החזרת הנתונים ל־Client
+* הוספת מוסכים חדשים דרך Endpoint ייעודי
+
+### נקודות קצה לדוגמה
+
+* `GET /api/Home/GetApiAndSave`
+* `POST /api/Home/Add`
+
+השרת רץ בכתובת:
+
+```
+http://localhost:5110
+```
+
+---
+
+## 🌐 צד לקוח – Frontend (Angular)
+
+### טכנולוגיות
+
+* Angular (Standalone Components)
+* Angular Material
+* HttpClient
+* TypeScript
+
+### יכולות עיקריות
+
+* קריאה ל־Web API
+* הצגת נתונים בטבלת Angular Material
+* בחירת שורות עם Checkbox
+* פעולות על רשומות נבחרות
+
+### רכיב מרכזי
+
+* `HomeComponent`
+
+  * מציג טבלת מוסכים
+  * מבצע קריאה ל־API ב־`ngOnInit`
+
+---
+
+## ▶️ הרצה מקומית
+
+### Backend
 
 ```bash
+dotnet run
+```
+
+### Frontend
+
+```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+גישה ל־Client:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## 📂 מבנה פרויקט (בקצרה)
+
+```
+Backend/
+ └── Controllers/
+ └── Models/
+ └── Services/
+
+Frontend/
+ └── src/app/
+     └── home/
+     └── app-root
 ```
 
-## Building
+---
 
-To build the project run:
+## 📝 הערות
 
-```bash
-ng build
-```
+* כל פעולות ה־DB מבוצעות בצורה אסינכרונית
+* הקוד כתוב בצורה מודולרית וניתנת להרחבה
+* מתאים לפרויקט לימודי / מבחן בית / תרגול Full‑Stack
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 👤 מחבר
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Rudi

@@ -25,7 +25,6 @@ public class GovernmentApiService
             .GetProperty("result")
             .GetProperty("records");
 
-        // ✅ Clone – ניתוק מה־JsonDocument
         return records
             .EnumerateArray()
             .Select(e => e.Clone())

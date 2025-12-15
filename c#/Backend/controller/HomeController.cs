@@ -19,7 +19,7 @@ public class HomeController : ControllerBase
         _govService = govService;
     }
 
-    // GET: api/Home/GetApiAndSave
+   
    [HttpGet("GetApiAndSave")]
 public async Task<IActionResult> GetApiAndSave()
 {
@@ -60,7 +60,7 @@ public async Task<IActionResult> GetApiAndSave()
 
 
 
-    // POST: api/Home/Add
+    
     [HttpPost("Add")]
     public async Task<IActionResult> Add([FromBody] List<Garage> garages)
     {

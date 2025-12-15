@@ -1,44 +1,53 @@
 <h2 class="margin">רשימת מוסכים</h2>
 
-<table mat-table dir="rtl" [dataSource]="list" class="mat-elevation-z2">
-    <ng-container matColumnDef="select">
-        <th mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="$event.checked ? selectAll() : removeAll()"></mat-checkbox>
-        </th>
-        <td mat-cell *matCellDef="let row">
-            <mat-checkbox (change)="selectRow($event,row)" [checked]="isSelected(row)"></mat-checkbox>
-        </td>
-    </ng-container>
+<table mat-table dir="rtl" [dataSource]="dataSource" class="mat-elevation-z2">
+  <!-- בחירה -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event.checked ? selectAll() : removeAll()"></mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (change)="selectRow($event, row)"
+        [checked]="isSelected(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
 
-    <ng-container matColumnDef="_id">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let row">{{ row._id }}</td>
-    </ng-container>
+  <!-- ID -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+  </ng-container>
 
-    <ng-container matColumnDef="shem_mosah">
-        <th mat-header-cell *matHeaderCellDef>שם מוסך</th>
-        <td mat-cell *matCellDef="let row">{{ row.shem_mosah }}</td>
-    </ng-container>
+  <!-- שם מוסך -->
+  <ng-container matColumnDef="shemMosah">
+    <th mat-header-cell *matHeaderCellDef>שם מוסך</th>
+    <td mat-cell *matCellDef="let row">{{ row.shemMosah }}</td>
+  </ng-container>
 
-    <ng-container matColumnDef="miktzoa">
-        <th mat-header-cell *matHeaderCellDef>מקצוע</th>
-        <td mat-cell *matCellDef="let row">{{ row.miktzoa }}</td>
-    </ng-container>
+  <!-- מקצוע -->
+  <ng-container matColumnDef="miktzoa">
+    <th mat-header-cell *matHeaderCellDef>מקצוע</th>
+    <td mat-cell *matCellDef="let row">{{ row.miktzoa }}</td>
+  </ng-container>
 
-    <ng-container matColumnDef="yishuv">
-        <th mat-header-cell *matHeaderCellDef>ישוב</th>
-        <td mat-cell *matCellDef="let row">{{ row.yishuv }}</td>
-    </ng-container>
+  <!-- יישוב -->
+  <ng-container matColumnDef="yishuv">
+    <th mat-header-cell *matHeaderCellDef>יישוב</th>
+    <td mat-cell *matCellDef="let row">{{ row.yishuv }}</td>
+  </ng-container>
 
-    <ng-container matColumnDef="telephone">
-        <th mat-header-cell *matHeaderCellDef>טלפון</th>
-        <td mat-cell *matCellDef="let row">{{ row.telephone }}</td>
-    </ng-container>
+  <!-- טלפון -->
+  <ng-container matColumnDef="telephone">
+    <th mat-header-cell *matHeaderCellDef>טלפון</th>
+    <td mat-cell *matCellDef="let row">{{ row.telephone }}</td>
+  </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
 <button class="margin" mat-raised-button color="primary" (click)="addSelectedToTable()">
-    הוספה
+  הוספה
 </button>
